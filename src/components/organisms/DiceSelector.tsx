@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Die, DieProps } from "./Die";
-import d6s6 from "./d6.svg";
+// import d6s6 from "./d6.svg";
 
 export interface RollType {
     side: number;
