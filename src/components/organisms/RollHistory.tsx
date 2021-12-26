@@ -9,10 +9,7 @@ export const RollHistory: FC = () => {
     return (
         <Container>
             <div>
-                <p>test</p>
-                <p>test</p>
-                <p>test</p>
-                <p>test</p>
+                <p>You rolled X (dX)</p>
             </div>
         </Container>
     );

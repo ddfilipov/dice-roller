@@ -7,21 +7,30 @@ import d6s4 from "../../assets/images/d6s4.png";
 import d6s5 from "../../assets/images/d6s5.png";
 import d6s6 from "../../assets/images/d6s6.png";
 
+export interface DiceSelectorProps {
+    updateRollHistory: (roll: number) => void;
+}
+
 export interface DieRollProps {
     side: number;
     icon: string;
 }
 
-export interface DieProps {
+interface DieProps {
     side: number[];
     icon: string[];
 }
 
-export const DiceSelector: FC = () => {
+export const DiceSelector: FC<DiceSelectorProps> = ({ updateRollHistory }) => {
     const [dieRoll, setDieRoll] = useState<DieRollProps>({ side: 1, icon: d6s1 });
     const sixSidedDie = {
         side: [1, 2, 3, 4, 5, 6],
         icon: [d6s1, d6s2, d6s3, d6s4, d6s5, d6s6],
+    };
+
+    const handleRollDie = () => {
+        getRandomNumber(sixSidedDie);
+        updateRollHistory(dieRoll.side);
     };
 
     const getRandomNumber = (die: DieProps) => {
@@ -34,12 +43,7 @@ export const DiceSelector: FC = () => {
     return (
         <div>
             <Die roll={dieRoll} />
-            <button
-                type="button"
-                onClick={() => {
-                    getRandomNumber(sixSidedDie);
-                }}
-            >
+            <button type="button" onClick={handleRollDie}>
                 Roll
             </button>
         </div>
