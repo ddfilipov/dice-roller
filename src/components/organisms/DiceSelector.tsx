@@ -6,13 +6,11 @@ export interface DiceSelectorProps {
     die: DieProps;
     dieRoll: DieRollProps;
     setDieRoll: ({ side, icon }: DieRollProps) => void;
-    updateRollHistory: (roll: number) => void;
 }
 
-export const DiceSelector: FC<DiceSelectorProps> = ({ die, dieRoll, setDieRoll, updateRollHistory }) => {
+export const DiceSelector: FC<DiceSelectorProps> = ({ die, dieRoll, setDieRoll }) => {
     const handleRollDie = () => {
         getRandomNumber(die);
-        // updateRollHistory(die.side);
     };
 
     const getRandomNumber = (die: DieProps) => {

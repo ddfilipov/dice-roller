@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DiceSelector } from "./components/organisms/DiceSelector";
 import { RollHistory } from "./components/organisms/RollHistory";
 import d6s1 from "./assets/images/d6s1.png";
@@ -26,10 +26,14 @@ function App() {
         icon: [d6s1, d6s2, d6s3, d6s4, d6s5, d6s6],
     };
 
+    useEffect(()=>{
+        addNewRollHistory(dieRoll.side);
+    },[dieRoll])
+
     return (
         <div className="App">
-            <DiceSelector die={sixSidedDie} dieRoll={dieRoll} setDieRoll={setDieRoll} updateRollHistory={addNewRollHistory} />
-            <RollHistory />
+            <DiceSelector die={sixSidedDie} dieRoll={dieRoll} setDieRoll={setDieRoll} />
+            <RollHistory dieRoll={dieRoll.side}/>
         </div>
     );
 }

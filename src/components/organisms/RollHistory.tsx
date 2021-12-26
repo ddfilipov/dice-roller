@@ -5,11 +5,15 @@ const Container = styled.div`
     border: 1px solid black;
 `;
 
-export const RollHistory: FC = () => {
+interface RollHistoryProps{
+    dieRoll: number;
+}
+
+export const RollHistory: FC<RollHistoryProps> = ({dieRoll}) => {
     return (
         <Container>
             <div>
-                <p>You rolled X (dX)</p>
+                <p>You rolled a {dieRoll} (d{dieRoll})</p>
             </div>
         </Container>
     );
