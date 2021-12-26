@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { DieRollProps } from "./DiceSelector";
+import { DieRollProps } from "../../App";
 
 interface DieRoll {
     roll: DieRollProps;
