@@ -1,24 +1,15 @@
 import { FC } from "react";
-import { RollType } from "./DiceSelector";
+import { DieRollProps } from "./DiceSelector";
 
-export interface DieProps {
-    side: number[];
-    icon: string[];
+interface DieRoll {
+    roll: DieRollProps;
 }
 
-interface DieList {
-    dado: DieProps;
-}
-
-interface RollTypeCombo {
-    roll: RollType;
-}
-
-export const Die: FC<RollTypeCombo> = ({ roll }) => {
+export const Die: FC<DieRoll> = ({ roll }) => {
     return (
         <div>
             <p>Number: {roll.side}</p>
-            <p>Icon:{roll.icon} </p>
+            <img src={roll.icon} alt="image of a die" />
         </div>
     );
 };

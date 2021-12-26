@@ -1,30 +1,39 @@
 import { FC, useState } from "react";
-import { Die, DieProps } from "./Die";
-// import d6s6 from "./d6.svg";
+import { Die } from "./Die";
+import d6s1 from "../../assets/images/d6s1.png";
+import d6s2 from "../../assets/images/d6s2.png";
+import d6s3 from "../../assets/images/d6s3.png";
+import d6s4 from "../../assets/images/d6s4.png";
+import d6s5 from "../../assets/images/d6s5.png";
+import d6s6 from "../../assets/images/d6s6.png";
 
-export interface RollType {
+export interface DieRollProps {
     side: number;
     icon: string;
 }
 
-export const DiceSelector: FC = () => {
-    const [die, setDie] = useState<RollType>({ side: 1, icon: "uno" });
+export interface DieProps {
+    side: number[];
+    icon: string[];
+}
 
+export const DiceSelector: FC = () => {
+    const [dieRoll, setDieRoll] = useState<DieRollProps>({ side: 1, icon: d6s1 });
     const sixSidedDie = {
         side: [1, 2, 3, 4, 5, 6],
-        icon: ["uno", "dos", "tres", "cuatro", "cinco", "seis"],
+        icon: [d6s1, d6s2, d6s3, d6s4, d6s5, d6s6],
     };
-    // const sixSidedDie = [1, 2, 3, 4, 5, 6];
+
     const getRandomNumber = (die: DieProps) => {
         const dieNumber = Math.floor(Math.random() * die.side.length);
-        const dieSide = die.side[dieNumber];
-        const dieIcon = die.icon[dieNumber];
-        setDie({ side: dieSide, icon: dieIcon });
+        const dieRollNumber = die.side[dieNumber];
+        const dieRollIcon = die.icon[dieNumber];
+        setDieRoll({ side: dieRollNumber, icon: dieRollIcon });
     };
 
     return (
         <div>
-            <Die roll={die} />
+            <Die roll={dieRoll} />
             <button
                 type="button"
                 onClick={() => {
