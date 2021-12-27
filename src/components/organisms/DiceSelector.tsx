@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { DieProps, DieRollProps } from "../../App";
-import { Die } from "./Die";
+import { Die } from "../molecules/Die";
 
 export interface DiceSelectorProps {
     die: DieProps;
