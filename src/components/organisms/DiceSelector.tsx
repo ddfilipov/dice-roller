@@ -22,6 +22,16 @@ export const DiceSelector: FC<DiceSelectorProps> = ({ die, dieRoll, setDieRoll }
 
     return (
         <div>
+            <label htmlFor="dice">Choose a die: </label>
+            <select name="dice">
+                <option value="two">2-sided coin</option>
+                <option value="four">4-sided die</option>
+                <option selected value="six">
+                    6-sided die
+                </option>
+                <option value="eight">8-sided die</option>
+                <option value="ten">10-sided die</option>
+            </select>
             <Die roll={dieRoll} />
             <button type="button" onClick={handleRollDie}>
                 Roll
