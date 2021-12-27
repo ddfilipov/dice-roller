@@ -20,20 +20,23 @@ export interface DieProps {
 
 function App() {
     const [dieRoll, setDieRoll] = useState<DieRollProps>({ side: 1, icon: d6s1 });
-    const addNewRollHistory = (roll: number) => {};
+    const [rollHistory, setRollHistory] = useState<number[]>([]);
+    const addNewRollHistory = () => {
+        setRollHistory([...rollHistory, dieRoll.side]);
+    };
     const sixSidedDie = {
         side: [1, 2, 3, 4, 5, 6],
         icon: [d6s1, d6s2, d6s3, d6s4, d6s5, d6s6],
     };
 
-    useEffect(()=>{
-        addNewRollHistory(dieRoll.side);
-    },[dieRoll])
+    useEffect(() => {
+        addNewRollHistory();
+    }, [dieRoll]);
 
     return (
         <div className="App">
             <DiceSelector die={sixSidedDie} dieRoll={dieRoll} setDieRoll={setDieRoll} />
-            <RollHistory dieRoll={dieRoll.side}/>
+            <RollHistory rolls={rollHistory} />
         </div>
     );
 }
