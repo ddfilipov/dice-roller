@@ -5,19 +5,18 @@ import { Die } from "../molecules/Die";
 export interface DiceSelectorProps {
     die: DieProps;
     dieRoll: DieRollProps;
-    setDieRoll: ({ side, icon }: DieRollProps) => void;
+    rollDie: ({ side, icon }: DieRollProps) => void;
 }
 
-export const DiceSelector: FC<DiceSelectorProps> = ({ die, dieRoll, setDieRoll }) => {
+export const DiceSelector: FC<DiceSelectorProps> = ({ die, dieRoll, rollDie }) => {
     const handleRollDie = () => {
-        getRandomNumber(die);
+        const dieSidePosition = getDieSidePosition(die);
+        rollDie({ side: die.side[dieSidePosition], icon: die.icon[dieSidePosition] });
     };
 
-    const getRandomNumber = (die: DieProps) => {
+    const getDieSidePosition = (die: DieProps) => {
         const dieNumber = Math.floor(Math.random() * die.side.length);
-        const dieRollNumber = die.side[dieNumber];
-        const dieRollIcon = die.icon[dieNumber];
-        setDieRoll({ side: dieRollNumber, icon: dieRollIcon });
+        return dieNumber;
     };
 
     return (

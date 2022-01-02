@@ -8,7 +8,6 @@ interface DieRoll {
 export const Die: FC<DieRoll> = ({ roll }) => {
     return (
         <div>
-            <p>Number: {roll.side}</p>
             <img src={roll.icon} alt="image of a die" />
         </div>
     );
